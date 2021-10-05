@@ -1,9 +1,14 @@
 require(reshape2)
 require(parallel)
-require(gtools)
+require(gtools) #
 require(data.table)
 require(dplyr)
-require(moments)
+require(moments) #skewness and kurtosis functions
+
+# Modified code from Clements, McCarthy, and Blanchard (2019) Nature 
+# Coms - "Early warning signals of rocovery in complex systems". Additional
+# EWS indicators, burn_in and interpolation capability added
+
 ##########################################################################################
 ##Lets assume you have a 4 column matrix, the first is of times, the second of counts, third is mean.size, fourth is sd.size
 ##########################################################################################
@@ -120,7 +125,7 @@ W_composite_ews<-function(dat, indicators, weights, trait = NULL, threshold, bur
      
   
       ##looped to calculate the rolling change	
-      for(i in (burn_in):length(dat[,1])){ ##EDIT MADE HERE !!!!!!
+      for(i in (burn_in):length(dat[,1])){
         #i=7
         ##subset the population of interest up until dat i
         dat.t<-subset(dat, time<=unique(sort(dat$time))[i])
@@ -224,10 +229,11 @@ W_composite_ews<-function(dat, indicators, weights, trait = NULL, threshold, bur
         
       }}
     results<-do.call("rbind", RES)
-    #results 		
-    results$rr<- -1*results$rr
+		
+    results$rr<- -1*results$rr #convert rr,mean.six and trait to correct orientation
     results$mean.size<- -1*results$mean.size
-    #results$trait <- -1*results$trait
+    results$trait <- -1*results$trait
+    
     ## multiply the calculated statistics by the weighting given in the function
     results[,match(weights[,1], names(results))]<-data.frame(mapply(`*`,results[,match(weights[,1], names(results))],weights[,2]))
     
