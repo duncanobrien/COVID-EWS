@@ -1,8 +1,5 @@
 require(reshape2)
 require(parallel)
-require(gtools) #
-require(data.table)
-require(dplyr)
 require(moments) #skewness and kurtosis functions
 
 # Modified code from Clements, McCarthy, and Blanchard (2019) Nature 
