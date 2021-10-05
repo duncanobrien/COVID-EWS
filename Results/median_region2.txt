@@ -1,0 +1,99 @@
+metric.code,period,region,mean,se,n,n_missed,n_prior,prop_missed,prop_prior
+acf,first,Asia,NA,NA,5,5,0,1,0
+acf,first,Europe,7,NA,9,8,1,0.888888888888889,0.111111111111111
+acf,first,N.America,9,NA,3,2,1,0.666666666666667,0.333333333333333
+acf,first,Other,22,NA,2,1,1,0.5,0.5
+acf,first,S.America,NA,NA,5,5,0,1,0
+acf,second,Asia,-7,2.30651251893416,5,2,1,0.4,0.2
+acf,second,Europe,18.3333333333333,2.90664061603458,9,6,2,0.666666666666667,0.222222222222222
+acf,second,N.America,20.5,15.3206469257085,3,1,1,0.333333333333333,0.333333333333333
+acf,second,Other,-8,NA,2,1,0,0.5,0
+acf,second,S.America,-20.5,1.66933120340652,5,1,0,0.2,0
+acf,third,Asia,-12,NA,2,1,0,0.5,0
+acf,third,Europe,-10,2.12132034355964,2,0,0,0,0
+acf,third,N.America,-3,NA,2,1,0,0.5,0
+acf,third,Other,-4.5,7.42462120245875,2,0,1,0,0.5
+acf + SD,first,Asia,37,5.65685424949238,5,3,2,0.6,0.4
+acf + SD,first,Europe,3.5,0.707106781186547,9,7,1,0.777777777777778,0.111111111111111
+acf + SD,first,N.America,9,NA,3,2,1,0.666666666666667,0.333333333333333
+acf + SD,first,Other,23,NA,2,1,1,0.5,0.5
+acf + SD,first,S.America,6,NA,5,4,1,0.8,0.2
+acf + SD,second,Asia,6.4,2.80570846668003,5,0,3,0,0.6
+acf + SD,second,Europe,36.1666666666667,1.55144960755213,9,3,6,0.333333333333333,0.666666666666667
+acf + SD,second,N.America,23.6666666666667,10.5742524470912,3,0,2,0,0.666666666666667
+acf + SD,second,Other,7,NA,2,1,1,0.5,0.5
+acf + SD,second,S.America,-15,1,5,2,0,0.4,0
+acf + SD,third,Asia,-6.5,3.18198051533946,2,0,0,0,0
+acf + SD,third,Europe,-8,2.12132034355964,2,0,0,0,0
+acf + SD,third,N.America,-3,NA,2,1,0,0.5,0
+acf + SD,third,Other,-1,5.65685424949238,2,0,1,0,0.5
+acf + SD + skew,first,Asia,19,5.6944417344167,5,1,2,0.2,0.4
+acf + SD + skew,first,Europe,26,2.82842712474619,9,7,2,0.777777777777778,0.222222222222222
+acf + SD + skew,first,N.America,2,NA,3,2,1,0.666666666666667,0.333333333333333
+acf + SD + skew,first,Other,18,NA,2,1,1,0.5,0.5
+acf + SD + skew,first,S.America,4.33333333333333,2.91433239925259,5,2,2,0.4,0.4
+acf + SD + skew,second,Asia,6,2.92574776766556,5,0,3,0,0.6
+acf + SD + skew,second,Europe,27.1666666666667,2.13080482872247,9,3,5,0.333333333333333,0.555555555555556
+acf + SD + skew,second,N.America,25.6666666666667,9.52384920626653,3,0,2,0,0.666666666666667
+acf + SD + skew,second,Other,17,11.3137084989848,2,0,2,0,1
+acf + SD + skew,second,S.America,-10.25,0.929157324317757,5,1,0,0.2,0
+acf + SD + skew,third,Asia,-6.5,3.18198051533946,2,0,0,0,0
+acf + SD + skew,third,Europe,-7.5,1.76776695296637,2,0,0,0,0
+acf + SD + skew,third,N.America,-6,NA,2,1,0,0.5,0
+acf + SD + skew,third,Other,-0.5,5.30330085889911,2,0,1,0,0.5
+acf + skew,first,Asia,24.5,4.81525354126516,5,1,3,0.2,0.6
+acf + skew,first,Europe,12.6666666666667,1.11296142231976,9,6,3,0.666666666666667,0.333333333333333
+acf + skew,first,N.America,4,2.35702260395516,3,1,1,0.333333333333333,0.333333333333333
+acf + skew,first,Other,8,6.36396103067893,2,0,1,0,0.5
+acf + skew,first,S.America,3,4.24264068711929,5,3,1,0.6,0.2
+acf + skew,second,Asia,4.8,3.19186465878489,5,0,3,0,0.6
+acf + skew,second,Europe,36,1.46397058595561,9,3,6,0.333333333333333,0.666666666666667
+acf + skew,second,N.America,13,11.6237305161085,3,0,1,0,0.333333333333333
+acf + skew,second,Other,0,NA,2,1,0,0.5,0
+acf + skew,second,S.America,-10.25,0.929157324317757,5,1,0,0.2,0
+acf + skew,third,Asia,-11,NA,2,1,0,0.5,0
+acf + skew,third,Europe,-8.5,1.76776695296637,2,0,0,0,0
+acf + skew,third,N.America,-6,NA,2,1,0,0.5,0
+acf + skew,third,Other,-0.5,5.30330085889911,2,0,1,0,0.5
+SD,first,Asia,23,7.91959594928933,5,3,1,0.6,0.2
+SD,first,Europe,11.3333333333333,1.37137100604249,9,6,3,0.666666666666667,0.333333333333333
+SD,first,N.America,2,NA,3,2,1,0.666666666666667,0.333333333333333
+SD,first,Other,23,NA,2,1,1,0.5,0.5
+SD,first,S.America,3.66666666666667,2.9280255007997,5,2,2,0.4,0.4
+SD,second,Asia,0,0.860232526704263,5,0,3,0,0.6
+SD,second,Europe,34.2,2.1320598050584,9,4,5,0.444444444444444,0.555555555555556
+SD,second,N.America,7.33333333333333,6.29226450434123,3,0,2,0,0.666666666666667
+SD,second,Other,51,NA,2,1,1,0.5,0.5
+SD,second,S.America,-10,2.98663690461362,5,2,1,0.4,0.2
+SD,third,Asia,-6.5,3.18198051533946,2,0,0,0,0
+SD,third,Europe,-8.5,1.76776695296637,2,0,0,0,0
+SD,third,N.America,NA,NA,2,2,0,1,0
+SD,third,Other,-1,4.94974746830583,2,0,1,0,0.5
+SD + skew,first,Asia,19,5.6944417344167,5,1,2,0.2,0.4
+SD + skew,first,Europe,16.5,1.33564614224126,9,7,2,0.777777777777778,0.222222222222222
+SD + skew,first,N.America,-11,2.82842712474619,3,1,0,0.333333333333333,0
+SD + skew,first,Other,18,NA,2,1,1,0.5,0.5
+SD + skew,first,S.America,3,3.95979797464467,5,3,1,0.6,0.2
+SD + skew,second,Asia,5.2,3.11897419033887,5,0,3,0,0.6
+SD + skew,second,Europe,30.1666666666667,2.25467050689235,9,3,5,0.333333333333333,0.555555555555556
+SD + skew,second,N.America,-1.33333333333333,3.74660340001941,3,0,1,0,0.333333333333333
+SD + skew,second,Other,23.5,18.7383297014435,2,0,1,0,0.5
+SD + skew,second,S.America,-4.75,1.70782512765993,5,1,1,0.2,0.2
+SD + skew,third,Asia,-6.5,3.18198051533946,2,0,0,0,0
+SD + skew,third,Europe,-8.5,1.06066017177982,2,0,0,0,0
+SD + skew,third,N.America,-6,NA,2,1,0,0.5,0
+SD + skew,third,Other,0,4.94974746830583,2,0,1,0,0.5
+skew,first,Asia,-19.3333333333333,4.96521231503078,5,2,0,0.4,0
+skew,first,Europe,36.5,2.27845518382332,9,7,2,0.777777777777778,0.222222222222222
+skew,first,N.America,-17,NA,3,2,0,0.666666666666667,0
+skew,first,Other,-9,NA,2,1,0,0.5,0
+skew,first,S.America,2.5,3.81837661840736,5,3,1,0.6,0.2
+skew,second,Asia,2,0.529150262212918,5,2,2,0.4,0.4
+skew,second,Europe,26,2.31474073955552,9,3,5,0.333333333333333,0.555555555555556
+skew,second,N.America,-1,3.71184290855335,3,0,1,0,0.333333333333333
+skew,second,Other,-5,1.4142135623731,2,0,0,0,0
+skew,second,S.America,-8.66666666666667,0.832666399786453,5,2,0,0.4,0
+skew,third,Asia,-11,NA,2,1,0,0.5,0
+skew,third,Europe,-10,0,2,0,0,0,0
+skew,third,N.America,NA,NA,2,2,0,1,0
+skew,third,Other,0,4.94974746830583,2,0,1,0,0.5
