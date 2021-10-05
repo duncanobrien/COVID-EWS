@@ -1,6 +1,7 @@
 ################################################################################
           ### Expanding/Iterative GAM Function ###
 ################################################################################
+
 expanding.gam <- function(mod.dat,sensitivity,train.length){
   #@mod.dat = data frame consisting of number of COVID-19 cases, date (numeric) and day-of-week (integer)
   #@sensitivity = length of time stationary persists for after a decrease to be acknowledged
