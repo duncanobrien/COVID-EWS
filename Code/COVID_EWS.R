@@ -13,20 +13,20 @@ source("Code/ews_difference_fn.R")
 ### Read in Data ###
 ###########################################################################################
 cov.uk.dat <- read.csv("Data/data_2021-Jun-09.csv") %>%
-  mutate(true.date = as.Date(date)) %>%
-  arrange(true.date)%>%
-  mutate(Date = lubridate::decimal_date(true.date)) %>%
-  mutate(cases = as.numeric(newCasesBySpecimenDate))%>%
-  mutate(Country = "UK")%>%
+  mutate(true.date = as.Date(date,format ="%Y-%m-%d")) %>% #ensure data col in Date format
+  arrange(true.date)%>% #sort by increasing date
+  mutate(Date = lubridate::decimal_date(true.date)) %>% #convert to decimal for ease of EWS assessment
+  mutate(cases = as.numeric(newCasesBySpecimenDate))%>% #ensure case col is numeric
+  mutate(Country = "UK")%>% #set county category as "UK"
   mutate(Weekday = factor(weekdays(as.Date(true.date)),
                              levels = c("Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday", "Sunday"),
                              ordered = TRUE), 
-         Weekday = as.integer(Weekday)) %>%
-  select(Country,Date,cases,true.date,Weekday)%>%
-  slice(24:n())
+         Weekday = as.integer(Weekday)) %>% #create weekday factor from true.date col
+  select(Country,Date,cases,true.date,Weekday)%>% #select on pertinent cols
+  slice(24:n()) #only keep timeseries after first case detected (confounds EWS assessment if timeseries begins with 0s) 
 
 cov.jpn.dat <- read.csv("Data/pcr_positive_daily_JPN.csv") %>%
-  mutate(true.date = as.Date(Date,format ="%Y/%m/%d")) %>%
+  mutate(true.date = as.Date(Date,format ="%Y/%m/%d")) %>% #slightly different date formatting in raw data
   arrange(true.date)%>%
   mutate(Date = lubridate::decimal_date(true.date)) %>%
   mutate(Country = "Japan")%>%
@@ -38,10 +38,10 @@ cov.jpn.dat <- read.csv("Data/pcr_positive_daily_JPN.csv") %>%
   slice(28:n())
 
 cov.usa.dat <- read.csv("Data/data_table_for_daily_case_trends_united_states.csv") %>%
-  mutate(true.date = as.Date(Date,format ="%B %d %Y")) %>%
+  mutate(true.date = as.Date(Date,format ="%B %d %Y")) %>% #slightly different date formatting in raw data
   arrange(true.date)%>%
   mutate(Date = lubridate::decimal_date(true.date)) %>%
-  mutate(New.Cases = gsub(",","",New.Cases))%>% #remove commas
+  mutate(New.Cases = gsub(",","",New.Cases))%>% #remove commas from case col
   mutate(cases = as.numeric(as.character(New.Cases)))%>%
   mutate(Country = "USA")%>%
   mutate(Weekday = factor(weekdays(as.Date(true.date)),
@@ -52,7 +52,7 @@ cov.usa.dat <- read.csv("Data/data_table_for_daily_case_trends_united_states.csv
 
 cov.chl.dat <- as.data.frame(t(read.csv("Data/daily_cov_CHL.csv",header=FALSE))) %>%
   janitor::row_to_names(row_number = 1)%>%
-  mutate(true.date = as.Date(Fecha,format ="%Y-%m-%d")) %>%
+  mutate(true.date = as.Date(Fecha,format ="%Y-%m-%d")) %>% #slightly different date formatting in raw data
   arrange(true.date)%>%
   mutate(Date = lubridate::decimal_date(true.date)) %>%
   mutate(cases = as.numeric(as.character(`Casos nuevos totales`)))%>%
@@ -63,7 +63,6 @@ cov.chl.dat <- as.data.frame(t(read.csv("Data/daily_cov_CHL.csv",header=FALSE)))
          Weekday = as.integer(Weekday)) %>%
   select(Country,Date,cases,true.date,Weekday)%>%
   slice(3:n())
-
 
 cov.WHO.dat <- read.csv("Data/WHO-COVID-19-global-data.csv") %>%
   mutate(true.date = as.Date(Date_reported,format ="%Y-%m-%d")) %>%
@@ -118,13 +117,23 @@ uk.deriv3 <- data.frame(gratia::derivatives(ukgam3, term = "s(Date)", interval =
 cutoff.uk.cov.ews.multigam <- pbmclapply(cov.uk.dat$Date[1:(length(cov.uk.dat$Date)-13)],FUN = function(x){
   
   data.cut <- cov.uk.dat[as.numeric(cov.uk.dat$Date) >=  as.numeric(x),]
+          # subset dataset to start date x
   
   tmp <- comp_EWS_wrapper(data.frame(timedat = as.numeric(data.cut$Date),
                                      biomass = data.cut$cases),
                           metrics = metrics,  threshold = 2, burn_in =7,
                           plotIt = F, ggplotIt = F, tail.direction = "one.tailed",
                           interpolate = F, method = "w_comp")
-  tmp$cutoff <- paste(x)
+  # @data.frame consists of timedat and case data (biomass byproduct of primary usage in other disciplines)
+  # @metrics refers EWS indicators of interest
+  # @threshold = threshold*sigma value for EWS indicator to trangress to constitute a 'signal'
+  # @burn_in = number of time points to train expanding indicator mean and standard error
+  # @plotIt and ggplotIt whether to plot EWS strength trends
+  # @tail.direction = one.tailed/two.tailed (if one.tailed, only positive threshold surpassing considered a 'signal', two.tailed is both direction)
+  # @interpolate whether missing values should be interpolated
+  # @method = "w_comp"/"dakos". "w_comp" is expanding whereas "dakos" is rolling window
+  
+  tmp$cutoff <- paste(x) # paste cutoff date for reference
   return(tmp)
   
 }, mc.cores =3 )
