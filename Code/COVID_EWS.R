@@ -3163,7 +3163,7 @@ comp.multiews.diff2 <- rbind(uk.multiews.diff2,ind.multiews.diff2,chl.multiews.d
                              phl.multiews.diff2,pol.multiews.diff2,can.multiews.diff2,
                              col.multiews.diff2,pk.multiews.diff2,per.multiews.diff2)%>%
   filter(period != "fourth") #create EWS-deriv difference data frame and drop the lone fourth wave in Japan
-write.csv(comp.multiews.diff2,file="Results/all.multiews.2.csv")
+write.csv(comp.multiews.diff2,row.names = FALSE,file="Results/all.multiews.2.csv")
 comp.multiews.diff2 <- read.csv(file="Results/all.multiews.2.csv")
 
 region.comp2 <- comp.multiews.diff2 %>% #categorise df into continents 
