@@ -1,8 +1,13 @@
+### Preamble ###
 require(tidyverse) #dplyr, ggplot etc
 require(ggthemes) #theme_clean
 require(pbmcapply) #paralleled lapply for EWS assessment
 require(mgcv) #gam fitting
 require(gratia) #derivative estimation
+require(lubridate) #working with dates functions
+require(data.table) #rbindlist
+require(scales) #plot scales functions
+require(egg) #ggarrange
 
 source("Code/composite_EWS_wrapper_fn.R")
 source("Code/curve_direction_fn.R")
