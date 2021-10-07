@@ -1802,7 +1802,7 @@ multi.jpn.p1 <- ggplot(multi.deriv.cov.jpn, aes(x=true.date, y=cases)) +
   scale_y_continuous(labels = scales::number_format(accuracy = 1000)) + 
   scale_x_date(date_breaks = "3 months", date_labels = "%b-%Y") +
   ggthemes::theme_clean() + ggtitle("Japan Daily COVID Cases: Four Waves")+  
-  annotate("label", x = as.Date("2020-04-01"), y =max(total.multijpnplot.dat$cases)*0.8 , label = "EWS indicator: acf + SD + skewness")+
+  annotate("label", x = as.Date("2020-05-01"), y =max(total.multijpnplot.dat$cases)*0.8 , label = "EWS indicator: acf + SD + skewness")+
   scale_alpha_manual(values = 0.8, labels = "EWS detected") +
   labs(alpha = "EWS")  +
   theme(plot.margin = margin(c(10, 8, 0, 10)),
