@@ -7,8 +7,8 @@ expanding.gam <- function(mod.dat,sensitivity,train.length){
   #@sensitivity = length of time a stationary period persists for after a decrease of the same length for the decrease to be acknowledged
   #@train.length = minimum number of data points allocated to model fitting
   
-  library(mgcv)
-  library(gratia)
+  library(mgcv) #GAM fitting
+  library(gratia) #derivative estimation
   set.seed(123)
   
   #curve.direction fn for identifying direction of change in GAM derivatives from
