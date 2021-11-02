@@ -51,7 +51,7 @@ region.scatter2 <- ggplot(data = region.comp2 %>% filter(data.source != "USA"|pe
         panel.grid.minor = element_blank(),
         strip.background = element_rect(fill="white"))
 
-png(file="Results/region_comparison_2.png",
-    width=3000, height = 2500 ,res=300) #visualise scatter of EWS preemption days by continent
+pdf(file="Results/region_comparison_2.pdf",
+    width=10, height = 8,onefile = F) #visualise scatter of EWS preemption days by continent
 region.scatter2
 dev.off()

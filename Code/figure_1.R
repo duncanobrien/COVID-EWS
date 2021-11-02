@@ -151,7 +151,7 @@ multi.uk.p1 <- ggplot(multi.deriv.cov.uk, aes(x=true.date, y=cases)) +
         legend.title = element_text(size = 10),
         legend.text = element_text(size=10))
 
-png(file="Results/UK/multigam_UK_fig.png",
-    width=3000, height = 2500 ,res=300)
+pdf(file="Results/UK/multigam_UK_fig.pdf",
+    width=9, height = 6,onefile=F)
 egg::ggarrange(multi.uk.p1,multi.uk.p2,nrow = 2,heights = c(2, 2), labels = c("a","b"))
 dev.off() # plot GAM predicted trends and EWS trends
